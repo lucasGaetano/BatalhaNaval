@@ -1,0 +1,15 @@
+--imprime tabuleiros.
+--os tabuleiros passados precisam já estarem preenchidos!
+--@param tabuleiro --> tabuleiro a ser impresso.
+
+imprimeTabuleiros = function(tabuleiro)
+  for linha=1,10 do
+   mostraTabuleiro=""
+    for coluna=1,10 do
+	mostraTabuleiro=mostraTabuleiro..tabuleiro[linha][coluna].."\t"
+    end
+
+	print(mostraTabuleiro)
+  end
+
+end
