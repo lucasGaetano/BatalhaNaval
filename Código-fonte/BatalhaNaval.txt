@@ -75,3 +75,72 @@ posicionarNavios = function(tabuleiro)
 		end
 	end
 end
+---------------------------------------------------------------------
+--Verifica os tiros de cada jogador podendo ser navio, mar ou inválido:
+--@Param x --> posição linha do tabuleiro
+--@Param y --> posição coluna do tabuleiro
+--@Param tabuleiro --> tabuleiro a qual a verificação será feita
+verificaTiro = function(x,y,tabuleiro)
+	verifica = true
+	while(verifica) do
+		if((x < 1 or x > 10) or (y < 1 or y > 10))then
+			x = nil
+			y = nil
+			print("Posição inválida, digite novamente!")
+			print("x:")
+			x = io.read("*number")
+			print("y:")
+			y = io.read("*number")
+		else
+			verifica = false
+		end
+	end
+	if(tabuleiro[x][y] == 1) then
+		tabuleiro[x][y]= 2
+		if(vez == 1) then
+		   contadorJ1 = contadorJ1 + 1
+		else
+		   contadorJ2 = contadorJ2 + 1
+		end
+		print("Navio Destruido!")
+	elseif(tabuleiro[x][y] == 0) then
+		tabuleiro[x][y]= 3
+		print("Tiro no mar!")
+		if(vez == 1) then
+			vez = 2
+		elseif(vez == 2) then
+			vez = 1
+		end
+	elseif(tabuleiro[x][y] == 2 or tabuleiro[x][y] == 3) then
+		verificacao = true
+		while(verificacao) do
+			print("posição inválida")
+			print("Digite a posição x do tiro:")
+			x = io.read("*number")
+			print("Digite a posição y do tiro:")
+			y = io.read("*number")
+			if(tabuleiro[x][y] == 1) then
+				tabuleiro[x][y]= 2
+				print("Navio Destruido!")
+				if(vez == 1) then
+					contadorJ1 = contadorJ1 + 1
+				else
+					contadorJ2 = contadorJ2 + 1
+				end
+				verificacao = false
+			elseif(tabuleiro[x][y] == 0) then
+				tabuleiro[x][y]= 3
+				print("Tiro no mar!")
+				if(vez == 1) then
+					vez = 2
+				elseif(vez == 2) then
+					vez = 1
+				end
+				verificacao = false
+			elseif(tabuleiro[x][y] == 2 or tabuleiro[x][y] == 3) then
+
+			end
+		end
+	end
+end
+-------------------------------------------------------------------------
