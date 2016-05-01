@@ -27,3 +27,18 @@ imprimeTabuleiro = function(tabuleiro, oposto)
     end
   end
 end
+
+----------------------------------------------------------------------
+--Função de criação dos tabuleiros
+--@Return -> retorna tabuleiro tamanho 10x10.
+--			 obs: tabuleiros criados já são preechidos com valor 0 (Mar).
+criarTabuleiro = function ()
+    T = {}
+    for linha=1,10 do
+      T[linha] = {}
+      for coluna=1,10 do
+        T[linha][coluna] = 0
+      end
+    end
+  return T
+end
