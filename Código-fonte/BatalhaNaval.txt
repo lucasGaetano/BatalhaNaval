@@ -1,15 +1,29 @@
---imprime tabuleiros.
---os tabuleiros passados precisam já estarem preenchidos!
---@param tabuleiro --> tabuleiro a ser impresso.
+--imprime o tabuleiro, Existem dois tipos de impressão:
+--*Impresão normal onde o tabuleiro mostra-rá todas as posições abertas;
+--*Impressão especial onde o tabuleiro mostra-rá todas as posições ocultando os navios;
 
-imprimeTabuleiros = function(tabuleiro)
-  for linha=1,10 do
-   mostraTabuleiro=""
-    for coluna=1,10 do
-	mostraTabuleiro=mostraTabuleiro..tabuleiro[linha][coluna].."\t"
+--@Param tabuleiro -> tabuleiro a ser impresso.
+--@Param oposto -> Define se a impressão do tabuleiro será normal ou especial.
+imprimeTabuleiro = function(tabuleiro, oposto)
+  if(oposto == false) then
+    for linha=1,10 do
+	mostra=""
+	for coluna=1,10 do
+	   mostra=mostra..tabuleiro[linha][coluna].."\t"
+	end
+	   print(mostra)
     end
-
-	print(mostraTabuleiro)
+  else
+    for linha=1,10 do
+	mostra=""
+	for coluna=1,10 do
+	   if(tabuleiro[linha][coluna] == 1) then
+	   	mostra=mostra.."0".."\t"
+	   else
+	   mostra=mostra..tabuleiro[linha][coluna].."\t"
+	   end
+	end
+	   print(mostra)
+    end
   end
-
 end
