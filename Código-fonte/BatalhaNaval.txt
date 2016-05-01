@@ -42,3 +42,36 @@ criarTabuleiro = function ()
     end
   return T
 end
+-----------------------------------------------------------------------------
+-- sessão para digitação das posições dos navios
+--@Param tabuleiro--> tabuleiro onde os navios serão posicionados
+posicionarNavios = function(tabuleiro)
+
+	imprimeTabuleiro(tabuleiro,false)
+	print ("Digite a posição do "..rodada.." ° ".."navio")
+	print("X:")
+	x = io.read("*number")
+
+	print("Digite a posição do "..rodada.." ° ".."navio")
+	print("Y:")
+	y = io.read("*number")
+
+	verifica = true
+
+	while(verifica) do
+--verifica se o "x" e "y" é maior que 0 e menor ou igual a 10
+		if((x < 1 or x > 10) or (y < 1 or y > 10) or tabuleiro[x][y] == 1)then
+			x = nil
+			y = nil
+			print("Posição inválida, digite novamente!")
+			print("x:")
+			x = io.read("*number")
+			print("y:")
+			y = io.read("*number")
+		else
+			print("posição válida!")
+			tabuleiro[x][y] = 1
+			verifica = false
+		end
+	end
+end
