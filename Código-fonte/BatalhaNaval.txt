@@ -169,8 +169,6 @@ for i = 1, 3 do
 	rodada = rodada + 1
 end
 	imprimeTabuleiro(tabuleiro1,false)
-os.execute("cls")
---io.write("\027[H\027[2J") alternativa para limpar a tela.
 
 --Jogador 2 escolhe posição dos seus navios!
 print("vez do jogador 2:")
@@ -181,3 +179,32 @@ for i = 1, 3 do
 	rodada = rodada + 1
 end
 	imprimeTabuleiro(tabuleiro2,false)
+
+--Começando o jogo:
+contadorJ1 = 0
+contadorJ2 = 0
+math.randomseed(os.time())
+math.random()
+vez = math.random(1,2)
+print("O jogador "..vez.." Comecará o jogo")
+
+while(vez ~= 0) do
+
+	if(vez == 1) then
+		imprimeTabuleiro(tabuleiro2,true)
+		atirar(tabuleiro2)
+
+		if(contadorJ1 == 3) then
+			print("Jogador 1 ganhou!")
+			vez = 0
+		end
+	elseif(vez == 2) then
+		imprimeTabuleiro(tabuleiro1,true)
+		atirar(tabuleiro1)
+
+		if(contadorJ2 == 3) then
+			print("Jogador 2 ganhou!")
+			vez = 0
+		end
+	end
+end
