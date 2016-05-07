@@ -144,3 +144,13 @@ verificaTiro = function(x,y,tabuleiro)
 	end
 end
 -------------------------------------------------------------------------
+-- Estabelece a posição de cada tiro.
+-- @Param tabuleiro--> tabuleiro onde o tiro será lançado
+atirar = function (tabuleiro)
+	print("Jogador "..vez.." Digite a posição x do tiro:")
+	x = io.read("*number")
+	print("Jogador "..vez.." Digite a posição y do tiro:")
+	y = io.read("*number")
+	verificaTiro(x,y,tabuleiro)
+end
+-------------------------------------------------------------------------
