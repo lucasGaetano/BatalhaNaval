@@ -154,3 +154,30 @@ atirar = function (tabuleiro)
 	verificaTiro(x,y,tabuleiro)
 end
 -------------------------------------------------------------------------
+-- Criando os tabbuleiros
+tabuleiro1 = criarTabuleiro()
+	print("Tabuleiro do jogador 1 foi criado!")
+tabuleiro2 = criarTabuleiro()
+	print("Tabuleiro do jogador 2 foi criado!")
+
+--Jogador 1 escolhe posição dos seus navios!
+print("vez do jogador 1:")
+print("Jogador 1, digite os valores:")
+	rodada = 1
+for i = 1, 3 do
+	posicionarNavios(tabuleiro1)
+	rodada = rodada + 1
+end
+	imprimeTabuleiro(tabuleiro1,false)
+os.execute("cls")
+--io.write("\027[H\027[2J") alternativa para limpar a tela.
+
+--Jogador 2 escolhe posição dos seus navios!
+print("vez do jogador 2:")
+print("Jogador 2, digite os valores:")
+	rodada = 1
+for i = 1, 3 do
+	posicionarNavios(tabuleiro2)
+	rodada = rodada + 1
+end
+	imprimeTabuleiro(tabuleiro2,false)
