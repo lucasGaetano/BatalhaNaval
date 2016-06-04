@@ -28,7 +28,7 @@ imprimeTabuleiro = function(tabuleiro, oposto)
   end
 end
 
-----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 --Função de criação dos tabuleiros
 --@Return -> retorna tabuleiro tamanho 10x10.
 --			 obs: tabuleiros criados já são preechidos com valor 0 (Mar).
@@ -42,7 +42,7 @@ criarTabuleiro = function ()
     end
   return T
 end
------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 -- sessão para digitação das posições dos navios
 --@Param tabuleiro--> tabuleiro onde os navios serão posicionados
 posicionarNavios = function(tabuleiro)
@@ -75,7 +75,7 @@ posicionarNavios = function(tabuleiro)
 		end
 	end
 end
----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 --Verifica os tiros de cada jogador podendo ser navio, mar ou inválido:
 --@Param x --> posição linha do tabuleiro
 --@Param y --> posição coluna do tabuleiro
@@ -143,7 +143,7 @@ verificaTiro = function(x,y,tabuleiro)
 		end
 	end
 end
--------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 -- Estabelece a posição de cada tiro.
 -- @Param tabuleiro--> tabuleiro onde o tiro será lançado
 atirar = function (tabuleiro)
@@ -153,7 +153,23 @@ atirar = function (tabuleiro)
 	y = io.read("*number")
 	verificaTiro(x,y,tabuleiro)
 end
--------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+--função para gerar um número aleatório
+--@Param intervaloInicial --> intervalo inicial para geração de possivel número aleatório.
+--@Param intervaloFinal --> intervalo final para geração de possivel número aleatório.
+
+--Ex. intervaloInicial = 1 e intervaloFinal = 10.
+--Os possiveis números para retorno serão{1,2,3,4,5,6,7,8,9,10}.
+
+--@Return --> um número aleatório que ficará entre a distância estabelecida pelos parametros.
+gerarNumeroAleatorio = function(intervaloInicial, intervaloFinal)
+	math.randomseed(os.time())
+	math.random()
+	numero = math.random(intervaloInicial, intervaloFinal)
+	return numero
+end
+--------------------------------------------------------------------------------------------------
+
 -- Criando os tabbuleiros
 tabuleiro1 = criarTabuleiro()
 	print("Tabuleiro do jogador 1 foi criado!")
@@ -183,9 +199,7 @@ end
 --Começando o jogo:
 contadorJ1 = 0
 contadorJ2 = 0
-math.randomseed(os.time())
-math.random()
-vez = math.random(1,2)
+vez = gerarNumeroAleatorio(1,2)
 print("O jogador "..vez.." Comecará o jogo")
 
 while(vez ~= 0) do
