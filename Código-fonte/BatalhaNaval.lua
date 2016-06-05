@@ -225,7 +225,22 @@ for i = 1,3 do
 end
 end
 ------------------------------------------------------------------------------------------------------
--- Criando os tabbuleiros
+print("                 Escolha o modo do jogo:                ")
+print()
+print()
+print("1 = VS CPU")
+print()
+print("2 = Modo 2 jogadores (Local)")
+escolha = io.read("*number")
+print()
+if(escolha == 1) then
+	tabuleiroCPU = criarTabuleiro()
+	tabuleiroJ1 = criarTabuleiro()
+	posicionarNaviosComputador(tabuleiroCPU)
+end
+
+if(escolha == 2) then
+-- Criando os tabuleiros
 	tabuleiro1 = criarTabuleiro()
 		print("Tabuleiro do jogador 1 foi criado!")
 	tabuleiro2 = criarTabuleiro()
@@ -277,3 +292,4 @@ end
 			end
 		end
 	end
+end
