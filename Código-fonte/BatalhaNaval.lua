@@ -169,56 +169,111 @@ gerarNumeroAleatorio = function(intervaloInicial, intervaloFinal)
 	return numero
 end
 --------------------------------------------------------------------------------------------------
-
--- Criando os tabbuleiros
-tabuleiro1 = criarTabuleiro()
-	print("Tabuleiro do jogador 1 foi criado!")
-tabuleiro2 = criarTabuleiro()
-	print("Tabuleiro do jogador 2 foi criado!")
-
---Jogador 1 escolhe posição dos seus navios!
-print("vez do jogador 1:")
-print("Jogador 1, digite os valores:")
-	rodada = 1
-for i = 1, 3 do
-	posicionarNavios(tabuleiro1)
-	rodada = rodada + 1
-end
-	imprimeTabuleiro(tabuleiro1,false)
-
---Jogador 2 escolhe posição dos seus navios!
-print("vez do jogador 2:")
-print("Jogador 2, digite os valores:")
-	rodada = 1
-for i = 1, 3 do
-	posicionarNavios(tabuleiro2)
-	rodada = rodada + 1
-end
-	imprimeTabuleiro(tabuleiro2,false)
-
---Começando o jogo:
-contadorJ1 = 0
-contadorJ2 = 0
-vez = gerarNumeroAleatorio(1,2)
-print("O jogador "..vez.." Comecará o jogo")
-
-while(vez ~= 0) do
-
-	if(vez == 1) then
-		imprimeTabuleiro(tabuleiro2,true)
-		atirar(tabuleiro2)
-
-		if(contadorJ1 == 3) then
-			print("Jogador 1 ganhou!")
-			vez = 0
+--
+posicionarNaviosComputador = function (tabuleiro)
+for i = 1,3 do
+	verifica = false
+	math.randomseed(os.time())
+	math.random()
+	bloco = math.random(1,4)
+	while(verifica == false) do
+		if(bloco == 1) then
+			x = gerarNumeroAleatorio(1,5)
+			y = gerarNumeroAleatorio(1,5)
+			if(tabuleiro[x][y] == 1) then
+				x = nil
+				y = nil
+			else
+				tabuleiro[x][y] = 1
+				verifica = true
+			end
 		end
-	elseif(vez == 2) then
-		imprimeTabuleiro(tabuleiro1,true)
-		atirar(tabuleiro1)
-
-		if(contadorJ2 == 3) then
-			print("Jogador 2 ganhou!")
-			vez = 0
+		if(bloco == 2) then
+			x = gerarNumeroAleatorio(1,5)
+			y = gerarNumeroAleatorio(6,10)
+			if(tabuleiro[x][y] == 1) then
+				x = nil
+				y = nil
+			else
+				tabuleiro[x][y] = 1
+				verifica = true
+			end
+		end
+		if(bloco == 3) then
+			x = gerarNumeroAleatorio(6,10)
+			y = gerarNumeroAleatorio(1,5)
+			if(tabuleiro[x][y] == 1) then
+				x = nil
+				y = nil
+			else
+				tabuleiro[x][y] = 1
+				verifica = true
+			end
+		end
+		if(bloco == 4) then
+			x = gerarNumeroAleatorio(6,10)
+			y = gerarNumeroAleatorio(6,10)
+			if(tabuleiro[x][y] == 1) then
+				x = nil
+				y = nil
+			else
+				tabuleiro[x][y] = 1
+				verifica = true
+			end
 		end
 	end
 end
+end
+------------------------------------------------------------------------------------------------------
+-- Criando os tabbuleiros
+	tabuleiro1 = criarTabuleiro()
+		print("Tabuleiro do jogador 1 foi criado!")
+	tabuleiro2 = criarTabuleiro()
+		print("Tabuleiro do jogador 2 foi criado!")
+
+--Jogador 1 escolhe posição dos seus navios!
+	print("vez do jogador 1:")
+	print("Jogador 1, digite os valores:")
+		rodada = 1
+	for i = 1, 3 do
+		posicionarNavios(tabuleiro1)
+		rodada = rodada + 1
+	end
+		imprimeTabuleiro(tabuleiro1,false)
+
+--Jogador 2 escolhe posição dos seus navios!
+	print("vez do jogador 2:")
+	print("Jogador 2, digite os valores:")
+		rodada = 1
+	for i = 1, 3 do
+		posicionarNavios(tabuleiro2)
+		rodada = rodada + 1
+	end
+		imprimeTabuleiro(tabuleiro2,false)
+
+--Começando o jogo:
+	contadorJ1 = 0
+	contadorJ2 = 0
+	vez = gerarNumeroAleatorio(1,2)
+	print("O jogador "..vez.." Comecará o jogo")
+
+	while(vez ~= 0) do
+
+		if(vez == 1) then
+			imprimeTabuleiro(tabuleiro2,true)
+			atirar(tabuleiro2)
+
+			if(contadorJ1 == 3) then
+				print("Jogador 1 ganhou!")
+				vez = 0
+			end
+		elseif(vez == 2) then
+			imprimeTabuleiro(tabuleiro1,true)
+			atirar(tabuleiro1)
+
+			if(contadorJ2 == 3) then
+				print("Jogador 2 ganhou!")
+				vez = 0
+			end
+		end
+	end
